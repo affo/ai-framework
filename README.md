@@ -42,6 +42,20 @@ Replace an existing destination:
 ./scripts/new-project.sh --force ../my-new-project
 ```
 
+## Upgrade Framework Files
+
+Refresh only framework-owned files in an existing project:
+
+```bash
+./scripts/upgrade-framework.sh ../my-project
+```
+
+Preview changes without modifying the target:
+
+```bash
+./scripts/upgrade-framework.sh --dry-run ../my-project
+```
+
 ## Maintainer guidance
 
 When working in this repository, use the root `docs/ai/` artifacts to plan and track scaffold evolution. Do not treat the root as a generated project to be shipped; refine the scaffold under `_framework/`, keep maintainer execution state at the root, and use `docs/ai/out/spikes/` when investigation is needed before refining specs further.

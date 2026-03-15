@@ -61,3 +61,15 @@ Track meaningful repository-wide file changes in chronological order.
 - doubt answer workflow
 - required blocking doubts to create matching answer stubs under `docs/ai/in/answers/` and added cross-referencing doubt and answer templates
 - to make clarification requests explicit and prevent unresolved doubts from floating without an answer path
+
+## RL-2026-03-15-07 Framework Upgrade Script
+
+- framework upgrade support
+- added `scripts/upgrade-framework.sh` with dry-run support to refresh framework-owned files in an existing target directory
+- to support safe framework upgrades without overwriting live project artifacts
+
+## RL-2026-03-15-08 Repo Specific Commit Workflow
+
+- repository commit workflow
+- added a repo-specific rule requiring semantic commit messages and documented local commit and push commands in the maintainer operations runbook
+- to make `commit changes` an explicit, repeatable repository operation in this repo

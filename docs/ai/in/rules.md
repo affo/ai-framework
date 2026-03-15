@@ -8,8 +8,7 @@ Edits to this file are framework-input changes, not project implementation work.
 
 ## Your Rules
 
-- <add a project-specific rule here>
-- <add a project-specific rule here>
+- Use semantic commit messages for every git commit. Prefer the format `type(scope): summary`.
 
 ## Example Rules
 

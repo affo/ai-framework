@@ -17,6 +17,8 @@
 - Added spikes as a formal optional phase with dedicated `docs/ai/out/spikes/` artifacts to drive further spec and plan refinement.
 - Added mandatory provenance and repository-wide change-log artifacts so generated files and overall file changes are traceable.
 - Required every generated document to include exact repo-log evidence links and updated the repo-log format to use referenceable entry headers.
+- Required blocking doubts to create paired answer stubs under `docs/ai/in/answers/`, with cross-references between doubt and answer files.
+- Added `scripts/upgrade-framework.sh` to refresh framework-owned files safely in an existing target directory.
 - Validation evidence: generated `/tmp/ai-framework-smoke` with `./scripts/new-project.sh --force /tmp/ai-framework-smoke` and confirmed it contains the expected scaffold files from `_framework/`.
 
 ## Repo Log Evidence
@@ -28,3 +30,5 @@
 - [RL-2026-03-15-01 Provenance And Change Tracking](../repo-log.md#rl-2026-03-15-01-provenance-and-change-tracking)
 - [RL-2026-03-15-02 Repo Log Evidence Links](../repo-log.md#rl-2026-03-15-02-repo-log-evidence-links)
 - [RL-2026-03-15-03 Template Cleanup And Simplification](../repo-log.md#rl-2026-03-15-03-template-cleanup-and-simplification)
+- [RL-2026-03-15-06 Doubt Answer Pairing](../repo-log.md#rl-2026-03-15-06-doubt-answer-pairing)
+- [RL-2026-03-15-07 Framework Upgrade Script](../repo-log.md#rl-2026-03-15-07-framework-upgrade-script)
