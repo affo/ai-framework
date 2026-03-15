@@ -132,6 +132,7 @@ Exit gate:
 - `docs/ai/in/specs/*`: root maintainer input specs
 - `docs/ai/in/rules.md`: maintainer operating rules
 - `docs/ai/in/answers/*.md`: clarifications for scaffold evolution
+- `docs/ai/in/answers/template.md`: answer template paired with blocking doubts
 - `docs/ai/out/plans/current.md`: current execution strategy
 - `docs/ai/out/plans/template.md`: plan template
 - `docs/ai/out/doubts/*.md`: ambiguity tracking
@@ -162,6 +163,14 @@ Framework-control files are not treated as project implementation artifacts:
 - `docs/ai/out/operations-template.md`
 
 Changes to those files may still be recorded in `docs/ai/out/repo-log.md`, but they do not require implementation-log coverage unless they are part of substantive project delivery work.
+
+## Doubt-Answer Pairing
+
+Blocking doubts must create paired answer stubs:
+
+- each blocking doubt under `docs/ai/out/doubts/` should reference an expected answer file under `docs/ai/in/answers/`
+- the corresponding answer file should reference the originating doubt
+- a blocking doubt is resolved only by a linked answer or explicit acceptance as risk
 
 ## Minimum Quality Bar
 

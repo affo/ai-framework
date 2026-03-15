@@ -55,3 +55,9 @@ Track meaningful repository-wide file changes in chronological order.
 - framework control files
 - clarified that `docs/ai/in/*` and `docs/ai/out/operations*.md` are framework-control artifacts and are not treated as project implementation work by default
 - to avoid forcing implementation tracking onto framework-input and runbook adjustments
+
+## RL-2026-03-15-06 Doubt Answer Pairing
+
+- doubt answer workflow
+- required blocking doubts to create matching answer stubs under `docs/ai/in/answers/` and added cross-referencing doubt and answer templates
+- to make clarification requests explicit and prevent unresolved doubts from floating without an answer path

@@ -8,7 +8,7 @@ Operate this repository using the framework defined in `docs/ai/framework.md`, w
 
 1. Read relevant input specs in `docs/ai/in/specs/` and operating rules in `docs/ai/in/rules.md` before substantial work.
 2. Keep a current plan in `docs/ai/out/plans/current.md`.
-3. Record ambiguities under `docs/ai/out/doubts/` before diverging from plan.
+3. Record ambiguities under `docs/ai/out/doubts/` before diverging from plan, and create matching answer stubs under `docs/ai/in/answers/` for blocking doubts.
 4. Run a spike under `docs/ai/out/spikes/` when material uncertainty can be reduced through investigation before refining specs or implementing.
 5. Use answers from `docs/ai/in/answers/` and any relevant spike results to refine design into `docs/ai/out/specs/`.
 6. Maintain `docs/ai/out/file-relationships.md` so generated artifacts remain traceable to their inputs and intermediate outputs.

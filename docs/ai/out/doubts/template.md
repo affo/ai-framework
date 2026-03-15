@@ -1,8 +1,16 @@
 # Doubt
 
+## Blocking
+
+<yes/no>
+
 ## Question
 
 <what is unclear>
+
+## Expected Answer File
+
+`../../in/answers/<answer-file>.md`
 
 ## Why It Matters
 
