@@ -1,4 +1,12 @@
-Read `$ARGUMENTS/spec.md`. Then write or update `$ARGUMENTS/plan.md` with:
+If `$ARGUMENTS` is empty, stop and tell the user to provide a slug: `/plan <slug>`.
+
+Resolve the spec directory:
+- If `$ARGUMENTS` contains a `/`, use it as-is.
+- Otherwise, search `docs/ai/specs/` for a directory whose name contains `$ARGUMENTS`. If multiple match, list them and ask the user to be more specific. If none match, stop and say no spec directory was found for that slug.
+
+Check that the resolved directory contains a `spec.md`. If it does not, stop and tell the user to create it first.
+
+Read `spec.md`. Then write or update `plan.md` in the same directory with:
 
 - **Goal**: one sentence — what are we trying to achieve
 - **Phases**: ordered steps, each with a clear scope

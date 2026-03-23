@@ -54,4 +54,4 @@ cat > "${SPEC_FILE}" <<EOF
 EOF
 
 echo "Created: ${SPEC_FILE}"
-echo "Next: fill in the spec, then run /plan docs/ai/specs/${FOLDER}"
+echo "Next: fill in the spec, then run /plan ${SLUG}"
