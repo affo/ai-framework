@@ -15,7 +15,6 @@ Behavior:
     - .claude/commands/plan.md
     - .claude/commands/impl.md
     - scripts/new-spec.sh
-    - scripts/upgrade-framework.sh
   - Does not touch CLAUDE.md, README.md, or anything under docs/ai/specs/.
 EOF
 }
@@ -24,7 +23,6 @@ MANAGED_FILES=(
   ".claude/commands/plan.md"
   ".claude/commands/impl.md"
   "scripts/new-spec.sh"
-  "scripts/upgrade-framework.sh"
 )
 
 DRY_RUN=0
