@@ -11,30 +11,21 @@ Examples:
   scripts/upgrade-framework.sh --dry-run ../my-project
 
 Behavior:
-  - Refreshes framework-owned files in <target-path> from the scaffold in _framework/.
-  - Replaces only managed files:
-    - AGENTS.md
-    - CLAUDE.md
-    - docs/ai/framework.md
-    - docs/ai/*/*-template.md
-    - docs/ai/*/*/template.md
-  - Removes obsolete managed files in the target if they no longer exist in _framework/.
-  - Does not modify live project artifacts such as plans, doubts, specs, impl logs, answers, or rules.
+  - Refreshes framework-owned files in <target-path>:
+    - .claude/commands/plan.md
+    - .claude/commands/impl.md
+    - scripts/new-spec.sh
+    - scripts/upgrade-framework.sh
+  - Does not touch CLAUDE.md, README.md, or anything under docs/ai/specs/.
 EOF
 }
 
-is_managed_path() {
-  local rel="$1"
-
-  case "${rel}" in
-    AGENTS.md|CLAUDE.md|docs/ai/framework.md|docs/ai/*/*-template.md|docs/ai/*/*/template.md)
-      return 0
-      ;;
-    *)
-      return 1
-      ;;
-  esac
-}
+MANAGED_FILES=(
+  ".claude/commands/plan.md"
+  ".claude/commands/impl.md"
+  "scripts/new-spec.sh"
+  "scripts/upgrade-framework.sh"
+)
 
 DRY_RUN=0
 if [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
@@ -67,39 +58,13 @@ if [[ ! -d "${TARGET_ROOT}" ]]; then
   exit 1
 fi
 
-declare -a source_managed=()
-while IFS= read -r path; do
-  rel="${path#${SCAFFOLD_ROOT}/}"
-  if is_managed_path "${rel}"; then
-    source_managed+=("${rel}")
-  fi
-done < <(find "${SCAFFOLD_ROOT}" -type f | sort)
-
-declare -a target_managed=()
-while IFS= read -r path; do
-  rel="${path#${TARGET_ROOT}/}"
-  if is_managed_path "${rel}"; then
-    target_managed+=("${rel}")
-  fi
-done < <(find "${TARGET_ROOT}" -type f | sort)
-
-for rel in "${source_managed[@]}"; do
+for rel in "${MANAGED_FILES[@]}"; do
   src="${SCAFFOLD_ROOT}/${rel}"
   dst="${TARGET_ROOT}/${rel}"
   echo "update ${rel}"
   if [[ ${DRY_RUN} -eq 0 ]]; then
     mkdir -p "$(dirname "${dst}")"
     cp "${src}" "${dst}"
-  fi
-done
-
-for rel in "${target_managed[@]}"; do
-  if printf '%s\n' "${source_managed[@]}" | grep -Fxq "${rel}"; then
-    continue
-  fi
-  echo "remove ${rel}"
-  if [[ ${DRY_RUN} -eq 0 ]]; then
-    rm -f "${TARGET_ROOT}/${rel}"
   fi
 done
 

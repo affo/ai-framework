@@ -1,31 +1,26 @@
 # <Project Name>
 
-<Short project description>
-
-## Getting Started
-
-<Explain how to run, develop, or use the project>
+TBW
 
 ## AI-Driven Coding
 
-This project is meant to be used with a coding agent.
+Each piece of work lives in its own folder under `docs/ai/specs/`:
 
-Typical usage:
+```
+docs/ai/specs/
+  <feature-slug>/
+    spec.md    ← you write this
+    plan.md    ← agent generates
+    log.md     ← agent generates
+```
 
-1. write one or more project specs in `docs/ai/in/specs/`
-2. add any project-specific constraints in `docs/ai/in/rules.md`
-3. let the agent create live working artifacts from the templates in `docs/ai/out/`
+Workflow:
+1. `./scripts/new-spec.sh <slug>` — scaffolds `docs/ai/specs/<slug>/spec.md`
+2. Run `/plan` — agent reads the spec and writes `plan.md`
+3. Ask questions in conversation — agent appends answers to `spec.md` under `## Clarifications`
+4. Run `/impl` — agent implements and writes `log.md`
+5. If pausing mid-session, ask Claude to write a resume block to `log.md`
 
-The framework then drives plans, doubts, spikes, generated specs, implementation logs, risks, handoffs, and provenance tracking through `docs/ai/out/`.
+All three files are worth committing — the spec captures intent and decisions, the plan captures approach, the log explains the PR.
 
-Typical additions:
-
-- Ask the agent to add a rule, for example: `Add a rule that we should not introduce new infrastructure without approval.`
-- Ask the agent to add an operation, for example: `Add an operation for running the local dev server with npm run dev.`
-
-### Quick Start
-
-1. Fill one or more files in `docs/ai/in/specs/` with your project scope.
-2. Adjust `docs/ai/in/rules.md` with your team-specific constraints.
-3. Let the agent create live files from the templates in `docs/ai/out/` as it runs the lifecycle.
-4. Optionally extend `AGENTS.md` or `CLAUDE.md` with project-specific behavior.
+Extend `CLAUDE.md` under `## Project Extensions` with any project-specific rules.

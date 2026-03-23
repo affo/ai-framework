@@ -15,20 +15,26 @@ The repository has two roles:
 - `scripts/new-project.sh`: generator that copies `_framework/` into a destination
 - repo root: maintainer workspace for evolving the scaffold itself
 
-The root also contains its own `docs/ai/` workspace so the framework can be used to shape the scaffold in `_framework/`.
-
 ## AI-Driven Coding
 
-This repository uses the framework in `docs/ai/` to plan, refine, and track scaffold changes.
+Each piece of work lives in its own folder under `docs/ai/specs/`:
 
-At a high level:
+```
+docs/ai/specs/
+  <feature-slug>/
+    spec.md    ← you write this
+    plan.md    ← agent generates
+    log.md     ← agent generates
+```
 
-1. define or update scope in `docs/ai/in/specs/`
-2. add project-specific constraints in `docs/ai/in/rules.md` when needed
-3. let the agent create and maintain live artifacts under `docs/ai/out/`
-4. implement shipped changes under `_framework/`
+Workflow:
+1. `./scripts/new-spec.sh <slug>` — scaffolds `docs/ai/specs/<slug>/spec.md`
+2. Run `/plan` — agent reads the spec and writes `plan.md`
+3. Ask questions in conversation — agent appends answers to `spec.md` under `## Clarifications`
+4. Run `/impl` — agent implements and writes `log.md`
+5. If pausing mid-session, ask Claude to write a resume block to `log.md`
 
-Use spikes, doubts, plans, specs, implementation logs, and provenance tracking under `docs/ai/out/` as the work evolves.
+All three files are worth committing — the spec captures intent and decisions, the plan captures approach, the log explains the PR.
 
 ## Generate a Project
 
@@ -44,13 +50,11 @@ Replace an existing destination:
 
 ## Upgrade Framework Files
 
-Refresh only framework-owned files in an existing project:
-
 ```bash
 ./scripts/upgrade-framework.sh ../my-project
 ```
 
-Preview changes without modifying the target:
+Preview without modifying:
 
 ```bash
 ./scripts/upgrade-framework.sh --dry-run ../my-project
@@ -58,4 +62,4 @@ Preview changes without modifying the target:
 
 ## Maintainer guidance
 
-When working in this repository, use the root `docs/ai/` artifacts to plan and track scaffold evolution. Do not treat the root as a generated project to be shipped; refine the scaffold under `_framework/`, keep maintainer execution state at the root, and use `docs/ai/out/spikes/` when investigation is needed before refining specs further.
+Refine the scaffold under `_framework/`. Keep maintainer execution state (specs, plans, logs) at the root under `docs/ai/specs/`. Do not ship root `docs/ai/` artifacts into generated projects.
