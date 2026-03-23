@@ -17,4 +17,4 @@ After completing meaningful work, append a dated entry to `log.md` in the same d
 - <how you validated it>
 ```
 
-Stop and ask the user rather than guessing on any decision with significant impact.
+Stop and ask the user rather than guessing on any decision with significant impact. If questions arise during implementation, ask them one at a time. For each answer, append it to a `## Clarifications (impl)` section at the bottom of `spec.md`.

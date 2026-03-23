@@ -14,3 +14,5 @@ Read `spec.md`. Then write or update `plan.md` in the same directory with:
 - **Open questions**: things that need clarification before starting
 
 Keep it concise — the plan should fit on one screen. If a plan already exists, update it in place.
+
+If there are open questions, ask them one at a time. For each answer: update the plan to reflect the decision and append the answer to a `## Clarifications (plan)` section at the bottom of `spec.md`. Only proceed to the next question after the user has answered. When all questions are resolved, remove the **Open questions** section from `plan.md`.
